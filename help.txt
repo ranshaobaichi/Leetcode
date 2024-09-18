@@ -1,0 +1,19 @@
+//proxy代理网络问题解决
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+//代理添加问题
+--一维数组
+    *数组名@数组元素个数
+--二维数组
+    *(int(*)[行数组大小])数组名@列数组大小
+
+//"TODO Tree"插件
+todo: 即将需要完成的任务或实现的功能
+fixme: 代码存在缺陷, 需要修复, 代码有错误无法运行
+bug: 代码存在已知的错误, 现在的代码中没有错误能运行, 但是由于用户输入导致的错误
+hack: 变通方法, 差强人意的解决方案
+note: 强调值得注意的地方, 特别是编写者的想法意图和灵感
+xxx: 代码有问题或具有误导性, 需引起警惕
+done:已经解决了的todo bug fixme将其变为done
+info:提示
