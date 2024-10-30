@@ -14,29 +14,12 @@ struct TreeNode {
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
-        if(!root)
+        if (root == nullptr)
             return false;
-        queue<pair<TreeNode *, int>> S;
-        S.push(make_pair(root,root->val));
-        TreeNode *cur = root;
-        int sum = 0, pre = 0;
-        while (!S.empty())
-        {
-            int cnt = S.size();
-            while (cnt > 0)
-            {
-                TreeNode *c = S.front().first;
-                int temp = S.front().second;
-                S.pop();
-                if (!c->left && !c->right && c->val == targetSum)
-                    return true;
-                if(c->left)
-                    S.push(make_pair(c->left, temp + c->left->val));
-                if(c->right)
-                    S.push(make_pair(c->right, temp + c->right->val));
-            }
-        }
-        return false;
+        int new_target = targetSum - root->val;
+        return ((new_target == 0 && !root->left && !root->right) 
+                || (hasPathSum(root->left, new_target)) 
+                || (hasPathSum(root->right, new_target)));
     }
 };
 
@@ -57,7 +40,7 @@ int main(){
     p2->right = p6;
 
     Solution pp;
-    cout << pp.hasPathSum(new TreeNode(-2, nullptr, new TreeNode(-3)), -3);
+    cout << pp.hasPathSum(new TreeNode(-2, nullptr, new TreeNode(-3)), -5);
 
     return 0;
 }
